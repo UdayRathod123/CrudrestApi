@@ -1,6 +1,7 @@
 package com.example.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,20 +23,20 @@ public class ServiceIMPL implements ServiceI{
 
 	@Override
 	public List<Employee> savamultiple(List<Employee> employees) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Employee> list = empRepository.saveAll((List<Employee>) employees);
+		return list;
 	}
 
 	@Override
 	public Employee getempById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Employee> byId = empRepository.findById(id);
+		return byId.get();
 	}
 
 	@Override
 	public List<Employee> getAllemp() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Employee> all = empRepository.findAll();
+		return all;
 	}
 
 }
